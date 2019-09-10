@@ -1,0 +1,172 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+}
+#root {
+  width: 100%; 
+  height: 100%;
+  margin: 0;
+}  
+.app {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+}
+.header {
+  padding: 2px;
+  background-color: #f0f2f5;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+.footer {
+  background-color: #567ca4;
+  color: white;
+  padding: 2px;
+  font-size: 14px;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+.main {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+.flex-fill {
+  -ms-flex: 1 1 auto !important;
+  flex: 1 1 auto !important;
+}
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+  flex-flow: column;
+}
+.tree {
+ height: 100%;
+ margin: 0;
+ list-style: none;
+ padding-left: 0;
+ cursor: default;
+}
+.SelectedRow {
+  background-color: #eee;
+  color: #39c;
+ }
+.tree li {
+  padding: 2px; 
+  //font-size: 24px;
+}  
+.tree-title {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding: 0 2px;
+}
+.tree-indent, .tree-expanded, .tree-collapsed, .tree-folder, .tree-folder-open, .tree-file {
+  width: 16px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.tree-expanded, .tree-collapsed {
+  cursor: pointer;
+}
+.tree-folder {
+	background: url('images/tree_icons.png') no-repeat -208px 0;
+}
+.tree-folder-open {
+	background: url('images/tree_icons.png') no-repeat -224px 0;
+} 
+.tree-file {
+	background: url('images/tree_icons.png') no-repeat -240px 0;
+}
+.tree-expanded {
+	background: url('images/tree_icons.png') no-repeat -18px 0px;
+}
+.tree-collapsed {
+	background: url('images/tree_icons.png') no-repeat 0px 0px;
+}
+.disable-selection {
+  -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer */
+-khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+-webkit-user-select: none; /* Chrome, Safari, and Opera */
+-webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+.charsets {
+  background-color: #f9f9f9;
+  margin-left: 4px;
+  padding: 4px;
+  font-size: 14px;
+  border: none;
+}
+.global {
+  background-color: #f9f9f9;
+  margin-left: 4px;
+  padding: 4px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.global:hover {
+  background-color: #f1f1f1
+}
+.dropbtn {
+  background-color: #6287ae;
+  color: white;
+  margin-left: 4px;
+  padding: 4px 10px 4px 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #4b6c94;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding-top: 10px;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown a:hover {background-color: #f1f1f1;}
+.show {display: block;}
+.info2 {
+  float: right;
+  margin-right: 4px;
+}
+.goto {
+  padding: 10px 4px 10px 4px;
+  display: flex;
+}
+.goto * {
+  border: none;
+  font-size: 16px;
+  margin-left: 4px;
+}
+.goto button {
+  margin-right: 4px;
+  cursor: pointer;
+  background-color: #6287ae;
+  color: white;
+}
+.goto button:hover {
+  background-color: #4b6c94;
+}
