@@ -1,12 +1,12 @@
-# Global Viewer for GT.M
+# Global Viewer for GT.M/YottaDB
 
- An example of how GT.M databases works with websocketd.
+ An example of how GT.M/YottaDB databases works with websocketd.
 
 ## Preparing and launch
 
  1. Download from http://websocketd.com a binary file for your system
 
- 2. Import routines(the Routines folder) in GT.M
+ 2. Import routines(the Routines folder) in GT.M/YottaDB
 
  3. Create a bash file startM.sh:
 ```
