@@ -5,7 +5,7 @@ ZLA(s)	Q $A(s)-32*95+$A(s,2)-32
 Start	 ;
 	I $ZCH'="M" VIEW "NOBADCHAR"
 	Set logout=0
-	S Charset=""
+	Set Charset="UTF-8"
 	N $es,$et s $et="g:'$es terr"
 tnxt	For  Do:$$twaitsin(10)  Quit:$G(logout)
 	.;; read header
@@ -50,7 +50,7 @@ Format(str,s1,s2,s3,s4,s5) ;
 Reply(fn,arg)	;
 	Q $$Format("{""fn"":""%s1"",""arg"":%s2}",fn,arg)	
 Conv(S) ;
-	I Charset'="UTF-8"&(Charset'="") S S=$$Ansi2Utf^%dWFn(S,$NA(Charset(Charset)))
+	I Charset'="UTF-8" S S=$$Ansi2Utf^%dWFn(S,$NA(Charset(Charset)))
 	E  I $ZCH="M" D:'$$Utf8^%dWFn(S)
 	.N i F i=1:1:$L(S) S:$A($E(S,i))>127 $E(S,i)="?"
 	Q $$Conv^%dWTree(S)
@@ -59,7 +59,7 @@ Begin()	;
 	S %conv="Conv^%dWebSock"
 	Q $$Reply("Begin",s)
 Charset(name,s)	;
-	N g S g=$NA(Charset(name)) S:'$D(@g) s=$$SetUtf^%dWFn(g,s) 
+	N g S g=$NA(Charset(name)) S:'$D(@g) s=$$SetUtf^%dWFn(g,s)
 	S Charset=name 
 	Q $$Screen($O(%ss(""),-1))
 New(g) ;
@@ -87,7 +87,7 @@ Left(i,l)	;
 	for i=1:1:kol I ns=$G(%ss(i)) S %Ici=i Q
 	Q $$Reload(par,kol,i)
 GoTo(g,kol)	;
-	;I $ZCH="M" I Charset'="UTF-8"&(Charset'="") S g=$$Utf2Ansi(g)
+	I $ZCH="M" I Charset'="UTF-8" S g=$$Utf2Ansi^%dWFn(g,$NA(Charset(Charset,0)))
 	N G,ns,i S G=$P(g,"(",1) Q:G="" "" S:$E(G,1)'="^" G="^"_G
 	I G'=$G(GL) Q:'$$New^%dWTree(G) "" 
 	S ns=$P(g,"(",2,99) S:$E(ns,$L(ns))=")" ns=$E(ns,1,$L(ns)-1)

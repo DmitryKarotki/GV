@@ -101,10 +101,19 @@ EnUtf(c)	;Encode UTF8
 	.I c<65536 S b1=c#64,b2=((c-b1)/64)#64,b3=(c-b1-(64*b2))/4096,s=$C(224+b3,128+b2,128+b1) Q
 SetUtf(g,s)	;
 	N c,i,j,n,u S c=$E(s,1),i=2,n=127
-	F  S j=i,i=$F(s,c,i) S:'i i=$L(s)+2  S n=n+1,u=$E(s,j,i-2) S:u'="" @g@(n)=$$EnUtf(u) Q:i>$L(s)
+	;F  S j=i,i=$F(s,c,i) S:'i i=$L(s)+2  S n=n+1,u=$E(s,j,i-2) S:u'="" @g@(n)=$$EnUtf(u) Q:i>$L(s)
+	F  S j=i,i=$F(s,c,i) S:'i i=$L(s)+2  S n=n+1,u=$E(s,j,i-2) S:u'="" u=$$EnUtf(u),@g@(n)=u,@g@(0,u)=n Q:i>$L(s)
 	Q ""	
 Ansi2Utf(S,charset)	;
 	N i,j,c,s S s="",j=0 F i=1:1:$L(S) S c=$A($E(S,i)) S:'j&(c'>127) j=i D:c>127
 	.S:j&(j<i) s=s_$E(S,j,i-1),j=0 S c=$G(@charset@(c)) S:c="" c="?" S s=s_c  
 	S:j s=s_$E(S,j,i) Q s
+Utf2Ansi(S,charset)	;
+	N i,j,c,s,b,l
+	S s="",j=0 F i=1:1:$L(S) S c=$A($E(S,i)),b=c>191&(c<247) S:'j&'b j=i D:b
+	.S:j&(j<i) s=s_$E(S,j,i-1),j=0 S l=$S(c<224:1,c<240:2,1:3),i=i+l,c=$C(c)_$E(S,i-l+1,i)
+	.S c=$G(@charset@(c)) I c S s=s_$C(c) Q
+	.S j=i-l  
+	S:j s=s_$E(S,j,i) Q s
+	Q s
 	;
